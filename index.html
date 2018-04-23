@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>match game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style/main.css" />
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="welcome-message-wrapper" id="welcome-message">
+            <div class="welcome-message-div">
+                <h2>WELCOME</h2>
+                <h2>INTRODUCE URSELF</h2>
+                <form class="welcome-form">
+                    <div>
+                        <label>UR NAME</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div>
+                        <label>UR EMAIL</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <input type="submit" value="SUBMIT">
+                </form>
+            </div>
+        </div>
+        <section class="game-section">
+            <div class="left-ui">
+                <section class="number-of-cards-section">
+                    <h2>number of cards</h2>
+                    <input type="range" min="0" max="50" step="2" value="12">
+                    <label>12</label>
+                    <button class="number-of-cards-apply-button">APPLY NUMBER OF CARDS</button>
+                </section>
+        
+        <section class="card-select-section">
+                <button>APPLY</button>
+        </section>
+        </div>
+        <section class="game-field-section">
+
+        </section>
+        <div class="right-ui">
+            <section class="score-section">
+                <h2>SCORE</h2>
+                <p class="score-counter"></p>
+                <section class="top-list-section">
+                    <h2>TOP-10</h2>
+                    <ul></ul>
+                </section>
+        </div>
+        </section>
+    </div>
+    <script src="./assets/scripts/app.js"></script>
+</body>
+
+</html>

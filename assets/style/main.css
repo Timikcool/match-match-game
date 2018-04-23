@@ -1,0 +1,181 @@
+/* red: #B60F13 or 182,15,19;
+darkblue: #0B125A or 11,18,90;
+blue: #0523C1 or 5,35,193;
+brown: #C45C01 or 196,92,1;
+black: #333 */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+h2 {
+    margin: 0;
+}
+
+/*          WELCOME ALERT           */
+
+.welcome-message-wrapper {
+    background: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.welcome-message-div {
+    background: white;
+    width: 50vw;
+    height: 50vh;
+    text-align: center;
+    border: 3px solid silver;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.welcome-message-div form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.welcome-message-div form input {
+    width: 25vw;
+    display: block;
+}
+
+/*              GAME                */
+
+.game-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.left-ui {
+    width: 20%;
+    height: 100vh;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+.game-field-section {
+    width: 60%;
+    height: 100vh;
+    display: flex;
+}
+
+.right-ui {
+    width: 20%;
+    height: 100vh;
+    background: red;
+}
+
+.card {
+    height: 350px;
+    width: 550px;
+    border: 3px solid white;
+
+    
+}
+
+/*              CARDS           */
+
+.ar {
+    background: url(../img/countries/ar.png);
+}
+
+.at {
+    background: url(../img/countries/at.png);
+}
+
+.by {
+    background: url(../img/countries/by.png);
+}
+
+.ca {
+    background: url(../img/countries/ca.png);
+}
+
+.cn {
+    background: url(../img/countries/cn.png);
+}
+
+.cz {
+    background: url(../img/countries/cz.png);
+}
+
+.de {
+    background: url(../img/countries/de.png);
+}
+
+.dk {
+    background: url(../img/countries/dk.png);
+}
+
+.es {
+    background: url(../img/countries/es.png);
+}
+
+.fr {
+    background: url(../img/countries/fr.png);
+}
+
+.gb {
+    background: url(../img/countries/gb.png);
+}
+
+.ge {
+    background: url(../img/countries/ge.png);
+}
+
+.jp {
+    background: url(../img/countries/jp.png);
+}
+
+.kp {
+    background: url(../img/countries/kp.png);
+}
+
+.nl {
+    background: url(../img/countries/nl.png);
+}
+
+.pt {
+    background: url(../img/countries/pt.png);
+}
+
+.ru {
+    background: url(../img/countries/ru.png);
+}
+
+.tr {
+    background: url(../img/countries/tr.png);
+}
+
+.ua {
+    background: url(../img/countries/ua.png);
+}
+
+.us {
+    background: url(../img/countries/us.png);
+}
+.closed{
+    background: #333;
+}
