@@ -72,6 +72,32 @@ function createCard(country) {
     return card;
 }
 
+function changeCover(cover){
+    for (let i = 0; i < gameField.children.length; i++) {
+        gameField.children[i].classList.add(cover);
+    }
+}
+
+let currentCover;
+coverBoris = document.querySelector('.cover-select-section .cover-boris');
+coverMihail = document.querySelector('.cover-select-section .cover-mihail');
+coverVladiir = document.querySelector('.cover-select-section .cover-vladimir');
+
+coverBoris.addEventListener('click', () => {
+    changeCover('cover-boris');
+    console.log('#cover Boris is here!');
+});
+
+coverMihail.addEventListener('click', () => {
+    changeCover('cover-mihail');
+    console.log('#cover Mihail is here!');
+});
+
+coverVladiir.addEventListener('click', () => {
+    changeCover('cover-vladimir');
+    console.log('#cover Vladimir is here!');
+});
+
 function shuffle(array) {
   let currentIndex = array.length, temporaryValue, randomIndex;
 
