@@ -80,6 +80,7 @@ h2 {
     width: 60%;
     height: 100vh;
     display: flex;
+    justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
     align-self: center;
@@ -96,7 +97,7 @@ h2 {
     height: 100px;
     width: 200px;
     border: 1px solid white;
-    border-radius: 15%;
+    
 
     
 }
@@ -185,6 +186,7 @@ h2 {
 .closed{
     background: #333;
 }
+
 .cover-boris{
     background: url(../img/covers/boris.jpg);
     background-size: cover;

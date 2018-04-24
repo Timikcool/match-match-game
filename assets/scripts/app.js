@@ -30,10 +30,10 @@ let numberOfCards = numberOfCardsSelector.value;
 
 let numberOfCardsCounter = document.querySelector('.number-of-cards-section label');
 
-numberOfCardsSelector.addEventListener('change',() => {
+numberOfCardsSelector.addEventListener('change', () => {
     numberOfCards = numberOfCardsSelector.value;
-    numberOfCardsCounter.textContent =`${numberOfCards}`;
-    console.log('#numberOfCards',numberOfCards);
+    numberOfCardsCounter.textContent = `${numberOfCards}`;
+    console.log('#numberOfCards', numberOfCards);
 })
 
 
@@ -50,35 +50,66 @@ function setCards(value) {
     while (gameField.lastChild) {
         gameField.removeChild(gameField.lastChild); // очищаем стол
     }
-    
+
     let shuffledCountries = shuffle(countriesArray); // тусуем картинки
 
-    for (let i = 0; i < value/2; i++) {
+    for (let i = 0; i < value / 2; i++) {
         deck.push(createCard(shuffledCountries[i]));
         deck.push(createCard(shuffledCountries[i])); // создаём колоду по две карты с одинаковыми картинками
     }
 
     let shuffledDeck = shuffle(deck); // тусуем колоду
-    for(let i = 0; i < shuffledDeck.length; i++){
+    for (let i = 0; i < shuffledDeck.length; i++) {
         gameField.appendChild(shuffledDeck[i]); // выкладываем карты на стол
     }
 }
+
 
 function createCard(country) {
     let card = document.createElement('div');
     card.classList.add(country);
     card.classList.add('card');
-    card.classList.add('closed')  //задаём картинку и закрываем карту
+    card.classList.add('closed') //задаём картинку и закрываем карту
+
+    card.addEventListener('click', () => {  //активация/деактивация карт по клику/второму клику
+                                            //TODO: toggle vs if else
+        if (card.classList.contains('closed')) {
+            activateCard(card, country);
+        } else if (card.classList.contains('active')) {
+            deactivateCard(card,country);
+        }
+    });
+
     return card;
 }
 
-function changeCover(cover){
-    for (let i = 0; i < gameField.children.length; i++) {
-        gameField.children[i].classList.add(cover);
-    }
+function activateCard(card, country) {
+    card.classList.remove('closed');
+    card.classList.remove(currentCover);
+    card.classList.add('active');
+    
+    console.log(`#card ${country} is active now!`);
 }
 
-let currentCover;
+function deactivateCard(card,country) {
+    card.classList.remove('active');
+    card.classList.add('closed');
+    card.classList.add(currentCover);
+    console.log(`#card ${country} deactivated!`);
+}
+
+function changeCover(cover) {
+
+    for (let i = 0; i < gameField.children.length; i++) {
+        gameField.children[i].classList.remove(currentCover);
+        gameField.children[i].classList.add(cover);
+    }
+
+    currentCover = cover;
+}
+
+let currentCover = 'default-cover';
+
 coverBoris = document.querySelector('.cover-select-section .cover-boris');
 coverMihail = document.querySelector('.cover-select-section .cover-mihail');
 coverVladiir = document.querySelector('.cover-select-section .cover-vladimir');
@@ -99,20 +130,21 @@ coverVladiir.addEventListener('click', () => {
 });
 
 function shuffle(array) {
-  let currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length,
+        temporaryValue, randomIndex;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
 
-  return array;
+    return array;
 }
