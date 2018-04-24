@@ -74,9 +74,9 @@ function createCard(country) {
     card.addEventListener('click', () => { //активация/деактивация карт по клику/второму клику
         //TODO: toggle vs if else
         if (card.classList.contains('closed')) {
-            activateCard(card, country);
+            activateCard(card);
         } else if (card.classList.contains('active')) {
-            deactivateCard(card, country);
+            deactivateCard(card);
         }
     });
 
@@ -84,14 +84,14 @@ function createCard(country) {
 }
 
 function activateCard(card) {
-
+    console.log(`#card ${card.classList[0]} is active now!`);
     card.classList.remove('closed');
     card.classList.remove(currentCover);
     card.classList.add('active');
 
     activeCards.push(card);
 
-    if (activeCards.length == 2) {
+    if (activeCards.length == 2 && activeCards[0] != activeCards[1]) {
         if (activeCards[0].classList[0] == activeCards[1].classList[0]) { //проверка одинаковы ли страны
             match();
         } else {
@@ -99,12 +99,12 @@ function activateCard(card) {
         }
     }
 
-    console.log(`#card ${card.classList[0]} is active now!`);
 }
 
 function match() {
     console.log('#match!');
     activeCards.forEach(item => gameField.removeChild(item));
+    activeCards = [];
     counterMatches++;
 }
 
@@ -122,11 +122,6 @@ function deactivateCard(card) {
 
 let counterMatches = 0;
 let activeCards = [];
-
-function sendActiveCard(card, country) {
-
-}
-
 
 
 function changeCover(cover) {
