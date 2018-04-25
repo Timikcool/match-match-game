@@ -183,10 +183,25 @@ label {
     }
 }
 
-
+@keyframes underflip {
+    0% {
+       transform: scaleY(1);
+    }
+    
+    50% {
+      transform:  scaleY(0);
+    }
+    
+    100%{
+      transform: scaleY(1);
+    }
+}
 
 .card.active{
     animation: flip 1s ease-in-out;
+}
+.card.deactivating{
+    animation: underflip .5s ease-in-out;
 }
 .card.delete{
     opacity: 0;
