@@ -12,8 +12,8 @@ globalWrapper.appendChild(welcomeMessageWrapper);
 
 function login(name,email){
     globalWrapper.removeChild(welcomeMessageWrapper);
-    window.localStorage.userName = name;
-    window.localStorage.userEmail = email;
+    window.localStorage.setItem('userName', name);
+    window.localStorage.setItem('userEmail', email);
 }
 
 form.onsubmit = () => {
@@ -77,6 +77,9 @@ function createCard(country) {
             activateCard(card);
         } else if (card.classList.contains('active')) {
             deactivateCard(card);
+            if (card == activeCards[0]) { //проверка на повторное нажатие на ту же карту
+                activeCards.shift();
+            }
         }
     });
 
@@ -85,42 +88,59 @@ function createCard(country) {
 
 function activateCard(card) {
     console.log(`#card ${card.classList[0]} is active now!`);
-    card.classList.remove('closed');
-    card.classList.remove(currentCover);
     card.classList.add('active');
 
-    activeCards.push(card);
+    setTimeout(() => {
+        card.classList.remove('closed');
+        card.classList.remove(currentCover);
+    }, 500);
 
-    if (activeCards.length == 2 && activeCards[0] != activeCards[1]) {
-        if (activeCards[0].classList[0] == activeCards[1].classList[0]) { //проверка одинаковы ли страны
-            match();
-        } else {
-            mismatch();
+    setTimeout(() => {
+
+        activeCards.push(card);
+
+        if (activeCards.length == 2 && activeCards[0] != activeCards[1]) {
+            if (activeCards[0].classList[0] == activeCards[1].classList[0]) { //проверка одинаковы ли страны
+                match();
+            } else {
+                mismatch();
+            }
         }
-    }
-
+    }, 1000);
 }
 
+
+
 function match() {
-    console.log('#match!');
-    activeCards.forEach(item => gameField.removeChild(item));
+
+    activeCards.forEach(item => item.classList.add('delete'));
+    setTimeout(() => {activeCards.forEach((item) => gameField.removeChild(item))},1000);
+    
     activeCards = [];
-    counterMatches++;
+
+    document.querySelector('.score-counter').textContent++;
+    console.log('#match!');
+
 }
 
 function mismatch() {
     activeCards.forEach(item => deactivateCard(item));
     activeCards = [];
+
+    console.log(`#mismatch!`)
 }
 
 function deactivateCard(card) {
     card.classList.remove('active');
     card.classList.add('closed');
     card.classList.add(currentCover);
+
+
+
     console.log(`#card ${card.classList[0]} deactivated!`);
 }
 
-let counterMatches = 0;
+
 let activeCards = [];
 
 

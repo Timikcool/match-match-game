@@ -3,10 +3,12 @@ darkblue: #0B125A or 11,18,90;
 blue: #0523C1 or 5,35,193;
 brown: #C45C01 or 196,92,1;
 black: #333 */
+
 @font-face {
     font-family: "Retro";
     src: url("../fonts/retro.ttf");
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -52,11 +54,16 @@ h2 {
     margin: auto;
 }
 
+.welcome-message-div h2,
+label {
+    color: #333;
+}
+
 .welcome-message-div form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 70%;
 }
 
@@ -72,49 +79,38 @@ h2 {
     flex-direction: row;
     width: 100%;
     height: 100%;
-    
 }
 
 .left-ui {
     width: 22%;
     height: 100vh;
-
-    background:
-radial-gradient(black 15%, transparent 16%) 0 0,
-radial-gradient(black 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color:#282828;
-background-size:16px 16px;
-    
+    background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     color: white;
-
-    -webkit-box-shadow: 25px 0px 50px 0px rgba(0,0,0,0.4);
--moz-box-shadow: 25px 0px 50px 0px rgba(0,0,0,0.4);
-box-shadow: 25px 0px 50px 0px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 25px 0px 50px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 25px 0px 50px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 25px 0px 50px 0px rgba(0, 0, 0, 0.4);
 }
-.number-of-cards-section{
+
+.number-of-cards-section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 20%;
 }
- label{
-    text-align: center;
-    font-size: 25px;
-    color: white;
-}
 
-.cover-select-section{
+.cover-select-section {
     display: flex;
     flex-direction: column;
     height: 60%;
     justify-content: space-between;
 }
+
 .game-field-section {
     width: 58%;
     height: 100vh;
@@ -123,163 +119,199 @@ box-shadow: 25px 0px 50px 0px rgba(0,0,0,0.4);
     flex-direction: row;
     flex-wrap: wrap;
     align-self: center;
-    
+}
+
+.game-section label {
+    text-align: center;
+    color: white;
 }
 
 .right-ui {
     width: 22%;
     height: 100vh;
-
-    background:
-radial-gradient(black 15%, transparent 16%) 0 0,
-radial-gradient(black 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color:#282828;
-background-size:16px 16px;
-
-
-    -webkit-box-shadow: -25px 0px 50px 0px rgba(0,0,0,0.4);
--moz-box-shadow: -25px 0px 50px 0px rgba(0,0,0,0.4);
-box-shadow: -25px 0px 50px 0px rgba(0,0,0,0.4);
+    background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px;
+    -webkit-box-shadow: -25px 0px 50px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: -25px 0px 50px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: -25px 0px 50px 0px rgba(0, 0, 0, 0.4);
 }
+
+.score-section {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.score-counter {
+    font-size: 46px;
+}
+
 .button {
-    border: 3px rgba(255,255,255,.1) solid;
+    border: 3px rgba(255, 255, 255, .1) solid;
     text-align: center;
     text-decoration: none;
     outline: none;
     color: white;
-    background:#333;
+    background: #333;
     transition: background-color .5s linear;
     padding: 3px;
-    
 }
-.button:hover{
+
+.button:hover {
     background: black;
 }
+
 .card {
     height: 100px;
     width: 200px;
     border: 1px solid white;
+    transition: opacity 1s linear;
+}
+@keyframes flip {
+    0% {
+       transform: scaleY(1);
+    }
     
+    50% {
+      transform:  scaleY(0);
+    }
+    
+    100%{
+      transform: scaleY(1);
+    }
+}
 
-    
+
+
+.card.active{
+    animation: flip 1s ease-in-out;
+}
+.card.delete{
+    opacity: 0;
 }
 
 /*              CARDS           */
 
+
+
 .ar {
     background: url(../img/countries/ar.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .at {
     background: url(../img/countries/at.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .by {
     background: url(../img/countries/by.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .ca {
     background: url(../img/countries/ca.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .cn {
     background: url(../img/countries/cn.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .cz {
     background: url(../img/countries/cz.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .de {
     background: url(../img/countries/de.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .dk {
     background: url(../img/countries/dk.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .es {
     background: url(../img/countries/es.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .fr {
     background: url(../img/countries/fr.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .gb {
     background: url(../img/countries/gb.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .ge {
     background: url(../img/countries/ge.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .jp {
     background: url(../img/countries/jp.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .kp {
     background: url(../img/countries/kp.png);
-    background-size: cover;
-}   
+    background-size: 100% 100%;
+}
 
 .nl {
     background: url(../img/countries/nl.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .pt {
     background: url(../img/countries/pt.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .ru {
     background: url(../img/countries/ru.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .tr {
     background: url(../img/countries/tr.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .ua {
     background: url(../img/countries/ua.png);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .us {
     background: url(../img/countries/us.png);
-    background-size: cover;
-}
-.closed{
-    background:black;
+    background-size: 100% 100%;
 }
 
-.cover-boris{
+.closed {
+    background: black;
+}
+
+
+.cover-boris {
     background: url(../img/covers/boris.jpg);
     background-size: cover;
 }
-.cover-mihail{
+
+.cover-mihail {
     background: url(../img/covers/mihail.jpg);
     background-size: cover;
 }
-.cover-vladimir{
+
+.cover-vladimir {
     background: url(../img/covers/vladimir.jpg);
     background-size: cover;
 }
