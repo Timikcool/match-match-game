@@ -4,6 +4,49 @@ let form = document.querySelector('form');
 let welcomeMessageWrapper = document.querySelector(".welcome-message-wrapper");
 let welcomeMessageAlert = document.querySelector(".welcome-message-div");
 
+results = window.localStorage.getItem('results');
+
+let topTable = document.querySelector('.top-table');
+if (results) {
+    let scores = results.match(/\d+/g);
+    let names = results.match(/[a-zA-z]+/g); //TODO: сортировка и первые 10 онли
+
+    for (let i = 0; i < names.length, i < scores.length; i++) {
+        player = document.createElement('div');
+        player.classList.add('player-intop-div');
+
+        player.name = names[i];
+        player.score = scores[i];   //в целях дебагинга добавил объектам эти проперти
+
+        let name = document.createElement('label');
+        name.classList.add('player-intop-name');
+        name.textContent = player.name;
+        player.appendChild(name);
+
+        let score = document.createElement('label');
+        score.classList.add('player-intop-score');
+        score.textContent = player.score;
+        player.appendChild(score);
+
+        topTable.appendChild(player);
+    }
+} else {
+    var results = '';
+};
+
+let startGameButton = document.querySelector('.start-the-game-button');
+let timeKeeper = 0;
+startGameButton.addEventListener('click', () => {
+    let intervalId = setInterval(() => {
+        timeKeeper++;
+        document.querySelector('.time-keeper').textContent++;
+        if (gameField.children.length == 0) {
+            endGame(timeKeeper);
+            clearInterval(intervalId);
+        }
+    }, 1000);
+});
+
 globalWrapper.removeChild(welcomeMessageWrapper);
 
 let countriesArray = ["ar", "us", "ua", "tr", "ru", "pt", "nl", "kp", "jp", "ge", "gb", "es", "fr", "dk", "de", "cz", "cn", "ca", "by", "at"]
@@ -114,9 +157,10 @@ function activateCard(card) {
 function match() {
 
     activeCards.forEach(item => item.classList.add('delete'));
-    setTimeout(() => {activeCards.forEach((item) => gameField.removeChild(item))},1000);
-    
-    activeCards = [];
+    setTimeout(() => {
+        activeCards.forEach((item) => gameField.removeChild(item));
+        activeCards = [];
+    }, 1000);
 
     document.querySelector('.score-counter').textContent++;
     console.log('#match!');
@@ -133,13 +177,15 @@ function mismatch() {
 function deactivateCard(card) {
     card.classList.add('deactivating');
 
-    setTimeout(()=>{
+    setTimeout(() => {
         card.classList.remove('active');
         card.classList.add('closed');
-        card.classList.add(currentCover);}, 250);
+        card.classList.add(currentCover);
+    }, 250);
 
     setTimeout(() => {
-        card.classList.remove('deactivating');},500);
+        card.classList.remove('deactivating');
+    }, 500);
 
 
 
@@ -180,6 +226,18 @@ coverVladiir.addEventListener('click', () => {
     changeCover('cover-vladimir');
     console.log('#cover Vladimir is here!');
 });
+
+
+
+function endGame(time) {
+    
+    score = document.querySelector('.score-counter').textContent;
+
+    window.localStorage.setItem(`results`, results + `${window.localStorage.getItem('userName')}:`+score);
+
+    
+
+}
 
 function shuffle(array) {
     let currentIndex = array.length,
