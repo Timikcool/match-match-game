@@ -8,20 +8,29 @@ results = window.localStorage.getItem('results');
 
 let topTable = document.querySelector('.top-table');
 if (results) {
-    let scores = results.match(/\d+/g);
-    let names = results.match(/[a-zA-z]+/g); //TODO: сортировка и первые 10 онли
+    let scores = results.match(/\d+/gi);
+    let names = results.match(/[a-zа-я]+/gi); //TODO: сортировка и первые 10 онли
+
+    let mapTop = new Map();
 
     for (let i = 0; i < names.length, i < scores.length; i++) {
+        mapTop.set(scores[i], names[i]);
+    }
+
+    scores.sort((a, b) => a - b);
+
+
+    for (let i = 0; i < 10 || i < scores.length; i++) {
         player = document.createElement('div');
         player.classList.add('player-intop-div');
 
-        player.name = names[i];
-        player.score = scores[i];   //в целях дебагинга добавил объектам эти проперти
+        player.score = scores[i]; //в целях дебагинга добавил объектам эти проперти
+        player.name = mapTop.get(scores[i]);
 
         let name = document.createElement('label');
         name.classList.add('player-intop-name');
         name.textContent = player.name;
-        player.appendChild(name);
+        player.appendChild(name); //решил их и использовать
 
         let score = document.createElement('label');
         score.classList.add('player-intop-score');
@@ -40,31 +49,32 @@ startGameButton.addEventListener('click', () => {
     let intervalId = setInterval(() => {
         timeKeeper++;
         document.querySelector('.time-keeper').textContent++;
-        if (gameField.children.length == 0) {
+        if (numberOfCards == 0) {
             endGame(timeKeeper);
             clearInterval(intervalId);
         }
     }, 1000);
 });
 
-globalWrapper.removeChild(welcomeMessageWrapper);
 
 let countriesArray = ["ar", "us", "ua", "tr", "ru", "pt", "nl", "kp", "jp", "ge", "gb", "es", "fr", "dk", "de", "cz", "cn", "ca", "by", "at"]
-/*welcomeMessageWrapper.appendChild(welcomeMessageAlert);
-globalWrapper.appendChild(welcomeMessageWrapper);
+window.onload = () => {
+    welcomeMessageWrapper.appendChild(welcomeMessageAlert);
+    globalWrapper.appendChild(welcomeMessageWrapper);
 
-function login(name,email){
-    globalWrapper.removeChild(welcomeMessageWrapper);
-    window.localStorage.setItem('userName', name);
-    window.localStorage.setItem('userEmail', email);
+    function login(name, email) {
+        globalWrapper.removeChild(welcomeMessageWrapper);
+        window.localStorage.setItem('userName', name);
+        window.localStorage.setItem('userEmail', email);
+    }
+
+    form.onsubmit = () => {
+        let name = form.elements.name.value;
+        let email = form.elements.email.value;
+
+        login(name, email);
+    }
 }
-
-form.onsubmit = () => {
-    let name = form.elements.name.value;
-    let email = form.elements.email.value;
-    
-    login(name, email);
-} */
 
 
 let numberOfCardsSelector = document.querySelector('.number-of-cards-section input');
@@ -116,9 +126,9 @@ function createCard(country) {
 
     card.addEventListener('click', () => { //активация/деактивация карт по клику/второму клику
         //TODO: toggle vs if else
-        if (card.classList.contains('closed')) {
+        if (card.classList.contains('closed') && !card.classList.contains('delete')) {
             activateCard(card);
-        } else if (card.classList.contains('active')) {
+        } else if (card.classList.contains('active') && !card.classList.contains('delete')) {
             deactivateCard(card);
             if (card == activeCards[0]) { //проверка на повторное нажатие на ту же карту
                 activeCards.shift();
@@ -157,8 +167,9 @@ function activateCard(card) {
 function match() {
 
     activeCards.forEach(item => item.classList.add('delete'));
+    numberOfCards -= 2;
     setTimeout(() => {
-        activeCards.forEach((item) => gameField.removeChild(item));
+        //activeCards.forEach((item) => gameField.removeChild(item)); 
         activeCards = [];
     }, 1000);
 
@@ -230,12 +241,17 @@ coverVladiir.addEventListener('click', () => {
 
 
 function endGame(time) {
-    
+
     score = document.querySelector('.score-counter').textContent;
+    name = window.localStorage.getItem('userName');
 
-    window.localStorage.setItem(`results`, results + `${window.localStorage.getItem('userName')}:`+score);
+    window.localStorage.setItem(`results`, results + `${name}:${score};`);
 
-    
+    let refresh = confirm(`CONGRATULATIONS, ${name}! Your score is ${score} in ${time}s!`);
+
+    if(refresh){
+        location.reload();
+    }
 
 }
 
