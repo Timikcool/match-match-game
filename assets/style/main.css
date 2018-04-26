@@ -71,6 +71,26 @@ label {
     width: 25vw;
     display: block;
 }
+/*              RULES PAGE               */
+
+.game-rules-wrapper{
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 22%;
+    right: 22%;
+    z-index: 9999;
+}
+
+.game-rules-message{
+    height: 100%;
+    position: absolute;
+    color: white;
+    text-align: left;
+}
+
 
 /*              GAME AND UI              */
 
@@ -164,8 +184,8 @@ label {
 }
 
 .card {
-    height: 100px;
-    width: 200px;
+    height: 12vh;
+    width: 12vw;
     border: 1px solid black;
     transition: opacity 1s linear;
 }
@@ -341,15 +361,15 @@ label {
 
 .cover-boris {
     background: url(../img/covers/boris.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .cover-mihail {
     background: url(../img/covers/mihail.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .cover-vladimir {
     background: url(../img/covers/vladimir.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
 }

@@ -46,6 +46,7 @@ if (results) {
 let startGameButton = document.querySelector('.start-the-game-button');
 let timeKeeper = 0;
 startGameButton.addEventListener('click', () => {
+    globalWrapper.removeChild(document.querySelector('.game-rules-wrapper'));
     let intervalId = setInterval(() => {
         timeKeeper++;
         document.querySelector('.time-keeper').textContent++;
@@ -61,8 +62,9 @@ let countriesArray = ["ar", "us", "ua", "tr", "ru", "pt", "nl", "kp", "jp", "ge"
 window.onload = () => {
     welcomeMessageWrapper.appendChild(welcomeMessageAlert);
     globalWrapper.appendChild(welcomeMessageWrapper);
+    
 
-    function login(name, email) {
+    function succesfullLogin(name, email) {
         globalWrapper.removeChild(welcomeMessageWrapper);
         window.localStorage.setItem('userName', name);
         window.localStorage.setItem('userEmail', email);
@@ -72,7 +74,7 @@ window.onload = () => {
         let name = form.elements.name.value;
         let email = form.elements.email.value;
 
-        login(name, email);
+        succesfullLogin(name, email);
     }
 }
 
