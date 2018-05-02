@@ -1,0 +1,23 @@
+{
+  "name": "match-match-game",
+  "version": "1.0.0",
+  "description": "game",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "webpack-cli": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timikcool/match-match-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timikcool/match-match-game/issues"
+  },
+  "homepage": "https://github.com/Timikcool/match-match-game#readme"
+}
