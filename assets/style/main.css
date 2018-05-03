@@ -187,9 +187,8 @@ label {
     height: 12vh;
     width: 12vw;
     border: 1px solid black;
-    transition: opacity 1s linear;
-    transition: transform 1s linear;
-    transition: background-image 0.5s linear;
+    transition: background-image 0.5s linear, opacity 1s linear, transform 1s linear;
+   
 }
 @keyframes flip {
     0% {
@@ -201,7 +200,7 @@ label {
     }
     
     100%{
-        transform: rotate3d(1, 0, 0, 180deg);
+        transform: rotate3d(1, 0, 0, 360deg);
     }
 }
 
