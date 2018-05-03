@@ -187,10 +187,11 @@ label {
     height: 12vh;
     width: 12vw;
     border: 1px solid black;
+    transform: rotate3d(0,1,0,0);
     transition: background-image 0.5s linear, opacity 1s linear, transform 1s linear;
    
 }
-@keyframes flip {
+/*@keyframes flip {
     0% {
        
     }
@@ -200,7 +201,7 @@ label {
     }
     
     100%{
-        transform: rotate3d(1, 0, 0, 360deg);
+        transform: rotate3d(1, 0, 0, 180deg);
     }
 }
 
@@ -214,9 +215,9 @@ label {
     }
     
     100%{
-        transform: rotate3d(1, 0, 0, 360deg);
+        transform: rotate3d(1, 0, 0, 180deg);
     }
-}
+} /*
 
 /*.card.active{
     animation: flip 1s ease-in-out;
@@ -256,121 +257,121 @@ label {
 
 
 .card.ar {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/ar.png);
     background-size: 100% 100%;
 }
 
 .card.at {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/at.png);
     background-size: 100% 100%;
 }
 
 .card.by {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/by.png);
     background-size: 100% 100%;
 }
 
 .card.ca {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/ca.png);
     background-size: 100% 100%;
 }
 
 .card.cn {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/cn.png);
     background-size: 100% 100%;
 }
 
 .card.cz {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/cz.png);
     background-size: 100% 100%;
 }
 
 .card.de {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/de.png);
     background-size: 100% 100%;
 }
 
 .card.dk {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/dk.png);
     background-size: 100% 100%;
 }
 
 .card.es {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/es.png);
     background-size: 100% 100%;
 }
 
 .card.fr {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/fr.png);
     background-size: 100% 100%;
 }
 
 .card.gb {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/gb.png);
     background-size: 100% 100%;
 }
 
 .card.ge {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/ge.png);
     background-size: 100% 100%;
 }
 
 .card.jp {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/jp.png);
     background-size: 100% 100%;
 }
 
 .card.kp {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/kp.png);
     background-size: 100% 100%;
 }
 
 .card.nl {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/nl.png);
     background-size: 100% 100%;
 }
 
 .card.pt {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/pt.png);
     background-size: 100% 100%;
 }
 
 .card.ru {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/ru.png);
     background-size: 100% 100%;
 }
 
 .card.tr {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/tr.png);
     background-size: 100% 100%;
 }
 
 .card.ua {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/ua.png);
     background-size: 100% 100%;
 }
 
 .card.us {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/countries/us.png);
     background-size: 100% 100%;
 }
@@ -381,19 +382,19 @@ label {
 
 
 .card.cover-boris {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/covers/boris.jpg);
     background-size: 100% 100%;
 }
 
 .card.cover-mihail {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/covers/mihail.jpg);
     background-size: 100% 100%;
 }
 
 .card.cover-vladimir {
-    transform: rotate3d(1, 0, 0, 360deg);
+    transform: rotate3d(1, 0, 0, 180deg);
     background-image: url(../img/covers/vladimir.jpg);
     background-size: 100% 100%;
 }
