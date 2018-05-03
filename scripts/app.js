@@ -16,7 +16,7 @@ startGameButton.addEventListener('click', () => {
     let intervalId = setInterval(() => {
         timeKeeper++;
         document.querySelector('.time-keeper').textContent++;
-        if (numberOfCards == 0) {
+        if (gameField.numberOfCards == 0) {
             endGame(timeKeeper);
             clearInterval(intervalId);
         }
@@ -27,32 +27,34 @@ startGameButton.addEventListener('click', () => {
 
 window.onload = customOnLoad();
 
+let gameField = {};
+gameField.elem = document.querySelector(".game-field-section");
+gameField.activeCards = [];
 
 let numberOfCardsSelector = document.querySelector('.number-of-cards-section input');
 
-let numberOfCards = numberOfCardsSelector.value;
+gameField.numberOfCards = numberOfCardsSelector.value;
 
 let numberOfCardsCounter = document.querySelector('.number-of-cards-section label');
 
 numberOfCardsSelector.addEventListener('change', () => {
-    numberOfCards = numberOfCardsSelector.value;
-    numberOfCardsCounter.textContent = `${numberOfCards}`;
-    console.log('#numberOfCards', numberOfCards);
+    gameField.numberOfCards = numberOfCardsSelector.value;
+    numberOfCardsCounter.textContent = `${gameField.numberOfCards}`;
+    console.log('#numberOfCards', gameField.numberOfCards);
 });
+
 
 
 let numberOfCardsApplyButton = document.querySelector(".number-of-cards-apply-button");
 
 numberOfCardsApplyButton.addEventListener('click', () => {
-    console.log(`#set ${numberOfCards} cards`);
-    setCards(numberOfCards);
+    console.log(`#set ${gameField.numberOfCards} cards`);
+    setCards(gameField);
 });
 
 let coverBoris = document.querySelector('.cover-select-section .cover-boris');
 let coverMihail = document.querySelector('.cover-select-section .cover-mihail');
 let coverVladiir = document.querySelector('.cover-select-section .cover-vladimir');
-
-let gameField = document.querySelector(".game-field-section");
 
 
 coverBoris.addEventListener('click', () => {

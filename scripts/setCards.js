@@ -3,11 +3,9 @@ import Card from './classes/Card';
 
 
 
-export default function setCards(value) {
+export default function setCards(gameField) {
     let countriesArray = ["ar", "us", "ua", "tr", "ru", "pt", "nl", "kp", "jp", "ge", "gb", "es", "fr", "dk", "de", "cz", "cn", "ca", "by", "at"];
-    let gameField = {};
-    gameField.elem = document.querySelector(".game-field-section");
-    gameField.activeCards = [];
+    let value = gameField.numberOfCards;
     let deck = [];
 
     while (gameField.elem.lastChild) {

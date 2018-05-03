@@ -40,7 +40,7 @@ export default class Card {
 			if (this.gameField.activeCards.length == 2 && this.gameField.activeCards[0] != this.gameField.activeCards[1]) {
 				if (this.gameField.activeCards[0].country == this.gameField.activeCards[1].country) { //проверка одинаковы ли страны
 					this.gameField.activeCards.forEach(item => item.elem.classList.add('delete'));
-					numberOfCards -= 2;
+					this.gameField.numberOfCards -= 2;
 					setTimeout(() => {
 						//activeCards.forEach((item) => this.gameField.removeChild(item)); 
 						this.gameField.activeCards = [];
@@ -70,6 +70,6 @@ export default class Card {
 		setTimeout(() => {
 			this.elem.classList.remove('deactivating');
 		}, 500);
-		console.log(`#card ${this.classList[0]} deactivated!`);
+		console.log(`#card ${this.elem.classList[0]} deactivated!`);
 	}
 }
