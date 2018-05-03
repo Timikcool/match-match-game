@@ -1,24 +1,28 @@
 import shuffle from './shuffle';
-import createCard from './createCard';
+import Card from './classes/Card';
 
-let countriesArray = ["ar", "us", "ua", "tr", "ru", "pt", "nl", "kp", "jp", "ge", "gb", "es", "fr", "dk", "de", "cz", "cn", "ca", "by", "at"];
-let gameField = document.querySelector(".game-field-section");
+
+
 export default function setCards(value) {
+    let countriesArray = ["ar", "us", "ua", "tr", "ru", "pt", "nl", "kp", "jp", "ge", "gb", "es", "fr", "dk", "de", "cz", "cn", "ca", "by", "at"];
+    let gameField = {};
+    gameField.elem = document.querySelector(".game-field-section");
+    gameField.activeCards = [];
     let deck = [];
 
-    while (gameField.lastChild) {
-        gameField.removeChild(gameField.lastChild); // очищаем стол
+    while (gameField.elem.lastChild) {
+        gameField.elem.removeChild(gameField.elem.lastChild); // очищаем стол
     }
 
     let shuffledCountries = shuffle(countriesArray); // тусуем картинки
 
     for (let i = 0; i < value / 2; i++) {
-        deck.push(createCard(shuffledCountries[i]));
-        deck.push(createCard(shuffledCountries[i])); // создаём колоду по две карты с одинаковыми картинками
+        deck.push(new Card(shuffledCountries[i], gameField));
+        deck.push(new Card(shuffledCountries[i], gameField)); // создаём колоду по две карты с одинаковыми картинками
     }
 
     let shuffledDeck = shuffle(deck); // тусуем колоду
     for (let i = 0; i < shuffledDeck.length; i++) {
-        gameField.appendChild(shuffledDeck[i]); // выкладываем карты на стол
+        gameField.elem.appendChild(shuffledDeck[i].elem); // выкладываем карты на стол
     }
 }

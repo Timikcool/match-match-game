@@ -3,12 +3,13 @@ import customOnLoad from './customOnLoad';
 import endGame from './endGame';
 import changeCover from './changeCover';
 
-let activeCards = [];
 
 let currentCover = 'default-cover';
 
 let startGameButton = document.querySelector('.start-the-game-button');
 let timeKeeper = 0;
+
+let globalWrapper = document.querySelector('.wrapper');
 
 startGameButton.addEventListener('click', () => {
     globalWrapper.removeChild(document.querySelector('.game-rules-wrapper'));
@@ -55,16 +56,16 @@ let gameField = document.querySelector(".game-field-section");
 
 
 coverBoris.addEventListener('click', () => {
-    changeCover('cover-boris');
+    currentCover = changeCover('cover-boris', currentCover);
     console.log('#cover Boris is here!');
 });
 
 coverMihail.addEventListener('click', () => {
-    changeCover('cover-mihail');
+    currentCover = changeCover('cover-mihail', currentCover);
     console.log('#cover Mihail is here!');
 });
 
 coverVladiir.addEventListener('click', () => {
-    changeCover('cover-vladimir');
+    currentCover = changeCover('cover-vladimir', currentCover);
     console.log('#cover Vladimir is here!');
 });
