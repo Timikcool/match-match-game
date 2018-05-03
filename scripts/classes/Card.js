@@ -1,7 +1,6 @@
 export default class Card {
 	constructor(country, gameField) {
 		this.elem = document.createElement('div');
-		this.elem.classList.add(country);
 		this.elem.classList.add('card');
 
 		this.country = country;
@@ -25,13 +24,14 @@ export default class Card {
 	}
 	activate() {
 		console.log(`#card ${this.country} is active now!`);
-		
+
 		this.elem.classList.add('active');
 
-		setTimeout(() => {
-			this.elem.classList.remove('closed');
-			this.elem.classList.remove(this.elem.currentCover);
-		}, 500);
+		this.elem.classList.remove(this.elem.currentCover);
+		this.elem.classList.add(this.country);
+		
+		this.elem.classList.remove('closed');
+
 
 		setTimeout(() => {
 
@@ -39,12 +39,13 @@ export default class Card {
 
 			if (this.gameField.activeCards.length == 2 && this.gameField.activeCards[0] != this.gameField.activeCards[1]) {
 				if (this.gameField.activeCards[0].country == this.gameField.activeCards[1].country) { //проверка одинаковы ли страны
+
 					this.gameField.activeCards.forEach(item => item.elem.classList.add('delete'));
 					this.gameField.numberOfCards -= 2;
-					setTimeout(() => {
-						//activeCards.forEach((item) => this.gameField.removeChild(item)); 
-						this.gameField.activeCards = [];
-					}, 1000);
+
+					//activeCards.forEach((item) => this.gameField.removeChild(item)); 
+					this.gameField.activeCards = [];
+
 
 					document.querySelector('.score-counter').textContent++;
 					console.log('#match!');
@@ -61,15 +62,15 @@ export default class Card {
 	deactivate() {
 		this.elem.classList.add('deactivating');
 
-		setTimeout(() => {
-			this.elem.classList.remove('active');
-			this.elem.classList.add('closed');
-			this.elem.classList.add(this.elem.currentCover);
-		}, 250);
 
-		setTimeout(() => {
-			this.elem.classList.remove('deactivating');
-		}, 500);
+		this.elem.classList.remove('active');
+		
+		this.elem.classList.remove(this.country);
+		this.elem.classList.add(this.elem.currentCover);
+
+		this.elem.classList.add('closed');
+
+		this.elem.classList.remove('deactivating');
 		console.log(`#card ${this.elem.classList[0]} deactivated!`);
 	}
 }
