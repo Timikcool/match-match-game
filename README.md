@@ -1,1 +1,1 @@
-Simple match-match game using JS
+Реализация игры на DOM, для максимума баллов стоит объединить с dev
